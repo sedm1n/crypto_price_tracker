@@ -1,7 +1,15 @@
-from typing import Optional
+from typing import Any, Dict, Optional
 from aiohttp import ClientSession, ClientError
+from enum import Enum
 
+class DeribitClientError(Exception):
+    """Базовый класс для ошибок клиента Deribit"""
+    pass
 
+class Currency(Enum):
+    """Поддерживаемые валюты"""
+    BTC = "btc"
+    ETH = "eth"
 
 class DeribitClient:
     """Асинхронный клиент для работы с Deribit API"""
@@ -40,7 +48,7 @@ class DeribitClient:
         Returns:
             str: URL для запроса
         """
-        return f"{self.BASE_URL}/public/get_index_price?index_name={currency.value}_USD"
+        return f"{self.BASE_URL}/public/get_index_price?index_name={currency.value}_usd"
 
     async def _make_request(self, url: str) -> Dict[str, Any]:
         """
@@ -71,3 +79,18 @@ class DeribitClient:
                 
         except ClientError as e:
             raise DeribitClientError(f"Request failed: {str(e)}") from e
+
+    async def get_index_price(self, currency: Currency) -> float:
+        """
+        Получение индекса цены
+        
+        Args:
+            currency: Валюта (BTC или ETH)
+            
+        Returns:
+            float: Индекс цены
+        """
+        url = self._get_index_url(currency)
+        data = await self._make_request(url)
+        
+        return float(data['index_price'])
