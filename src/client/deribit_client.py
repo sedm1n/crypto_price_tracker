@@ -38,7 +38,7 @@ class DeribitClient:
         if self._own_session and self._session is not None:
             await self._session.close()
 
-    def _get_index_url(self, currency: Currency) -> str:
+    def _get_index_url(self, ticker: str) -> str:
         """
         Формирование URL для запроса индекса цены
         
@@ -48,7 +48,7 @@ class DeribitClient:
         Returns:
             str: URL для запроса
         """
-        return f"{self.BASE_URL}/public/get_index_price?index_name={currency.value}_usd"
+        return f"{self.BASE_URL}/public/get_index_price?index_name={ticker}"
 
     async def _make_request(self, url: str) -> Dict[str, Any]:
         """
@@ -80,7 +80,7 @@ class DeribitClient:
         except ClientError as e:
             raise DeribitClientError(f"Request failed: {str(e)}") from e
 
-    async def get_index_price(self, currency: Currency) -> float:
+    async def get_index_price(self, ticker: str) -> float:
         """
         Получение индекса цены
         
@@ -90,7 +90,41 @@ class DeribitClient:
         Returns:
             float: Индекс цены
         """
-        url = self._get_index_url(currency)
+        url = self._get_index_url(ticker)
         data = await self._make_request(url)
         
         return float(data['index_price'])
+    
+    async def get_prices_periodic(self, 
+                                currencies: list[Currency],
+                                interval: int = 60,
+                                callback = None):
+        """
+        Периодическое получение цен для списка валют
+        
+        Args:
+            currencies: Список валют
+            interval: Интервал запросов в секундах
+            callback: Функция обратного вызова для обработки полученных данных
+            
+        Yields:
+            List[PriceData]: Список данных о ценах
+        """
+        while True:
+            try:
+                prices = []
+                for currency in currencies:
+                    price_data = await self.get_current_price(currency)
+                    prices.append(price_data)
+                    logger.debug(f"Received price for {currency.value}: {price_data.price}")
+                
+                if callback:
+                    await callback(prices)
+                else:
+                    yield prices
+                    
+                await asyncio.sleep(interval)
+                
+            except Exception as e:
+                logger.error(f"Error fetching prices: {str(e)}")
+                await asyncio.sleep(5)  # Короткая пауза перед повторной попыткой

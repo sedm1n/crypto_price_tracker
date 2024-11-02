@@ -2,7 +2,7 @@ import logging
 from sqlalchemy import delete, insert, select, update
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 
-from src.db.database import get_async_session
+from db.database import get_async_session
 
 logger = logging.getLogger(__name__)
 
@@ -46,15 +46,15 @@ class BaseDao:
                 return None
 
     @classmethod
-    async def get_all(cls, **filter_by):
+    async def get_all(cls ):
         async with get_async_session() as session:
-            query = select(cls.model).filter_by(**filter_by)
+            query = select(cls.model)
             try:
                 result = await session.execute(query)
                 return result.scalars().all()
 
             except SQLAlchemyError as e:
-                extra = {"filter_by": filter_by}
+               
                 logger.error(e, extra=extra, exc_info=True)
                 return None
 
@@ -65,6 +65,7 @@ class BaseDao:
             return None
 
         async with get_async_session() as session:
+            
             query = insert(cls.model).values(**data).returning(cls.model)
 
             try:

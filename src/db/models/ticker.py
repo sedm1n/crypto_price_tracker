@@ -5,7 +5,7 @@ from sqlalchemy import (BigInteger, Column, ForeignKey, Integer, Numeric,
                         String, UniqueConstraint)
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from src.db.database import Base
+from db.database import Base
 
 
 class Ticker(Base):
