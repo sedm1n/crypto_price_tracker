@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "crypto-price-tracker"
+version = "0.1.0"
+description = ""
+authors = ["sedm1n <4310481@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.12.3"
+fastapi = "^0.115.4"
+alembic = "^1.13.3"
+aiohttp = "^3.10.10"
+sqlalchemy = {extras = ["asyncio"], version = "^2.0.36"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
