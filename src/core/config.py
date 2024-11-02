@@ -25,7 +25,10 @@ class Config(BaseSettings):
 
     model_config = SettingsConfigDict(
         env_file=".env", env_file_encoding="utf-8"
+
     )
+    def get_db_url(self) -> str:
+        return f"postgresql://{self.DB_USER}:{self.DB_PASSWORD}@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}"
 
 
 cfg = Config()

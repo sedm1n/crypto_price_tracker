@@ -12,6 +12,7 @@ fastapi = "^0.115.4"
 alembic = "^1.13.3"
 aiohttp = "^3.10.10"
 sqlalchemy = {extras = ["asyncio"], version = "^2.0.36"}
+ccxt = "^4.4.25"
 
 
 [build-system]
