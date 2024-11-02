@@ -12,7 +12,7 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from db.database import Base
+from src.db.database import Base
 
 
 class Ticker(Base):
@@ -41,7 +41,7 @@ class PriceHistory(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
     ticker_id: Mapped[int] = mapped_column(
         Integer,
-        ForeignKey("Tickers.id", ondelete="CASCADE"),
+        ForeignKey("tickers.id", ondelete="CASCADE"),
         nullable=False,
     )
     price: Mapped[Numeric] = mapped_column(
