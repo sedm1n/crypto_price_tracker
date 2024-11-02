@@ -24,7 +24,7 @@ class Config(BaseSettings):
     LOG_LEVEL: Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
 
     model_config = SettingsConfigDict(
-        env_file=".env", env_file_encoding="utf-8"
+        env_file="../.env", env_file_encoding="utf-8"
 
     )
     def get_db_url(self) -> str:
