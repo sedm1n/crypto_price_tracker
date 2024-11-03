@@ -15,7 +15,7 @@ async def get_tickers():
     
     return tickers
 
-@router.post("/{ticker}")
+@router.post("/add_ticker")
 async def add_ticker(ticker:TickerSchema):
     exist_ticker = await TickerDao.find_one_or_none(name=ticker.name)
     if exist_ticker:

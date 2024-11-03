@@ -1,19 +1,22 @@
 import asyncio
 
-from client.deribit_client import DeribitClient, Currency
-from db.dao.price_history import PriceHistoryDao
+from client.deribit_client import Currency, DeribitClient
 from db.dao.ticker import TickerDao
-from services.collector.price_history import periodic_price_fetch_with_queue
+from services.collector.price_history import periodic_price_fetch
 
-async def main( ):
+
+async def main():
     async with DeribitClient() as client:
 
         ticker_dao = TickerDao()
-        price_history_dao = PriceHistoryDao()
 
         tickers = await ticker_dao.get_all()
-        print(tickers)
-        await periodic_price_fetch_with_queue(client,tickers, interval=60 )
+
+        if not tickers:
+            logger.error("Tickers not found")
+            raise ValueError("Tickers not found")
+
+        await periodic_price_fetch(client, tickers, interval=60)
 
 
 if __name__ == "__main__":
