@@ -5,6 +5,6 @@ class PriceHistorySchema(BaseModel):
     ticker_id: int
     price: float
     
-class PriceHistoryResponse(PriceHistorySchema):
+class PriceHistoryResponseSchema(PriceHistorySchema):
     id: int
     created_at: int
