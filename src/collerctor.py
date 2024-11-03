@@ -1,9 +1,12 @@
 import asyncio
+import logging.config
 
-from client.deribit_client import Currency, DeribitClient
+from client.deribit_client import DeribitClient
+from core.logging_config import logging_config
 from db.dao.ticker import TickerDao
 from services.collector.price_history import periodic_price_fetch
 
+logging.config.dictConfig(logging_config)
 
 async def main():
     async with DeribitClient() as client:

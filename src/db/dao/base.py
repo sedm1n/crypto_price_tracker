@@ -46,9 +46,9 @@ class BaseDao:
                 return None
 
     @classmethod
-    async def get_all(cls ):
+    async def get_all(cls, **filter_by):
         async with get_async_session() as session:
-            query = select(cls.model)
+            query = select(cls.model).filter_by(**filter_by)
             try:
                 result = await session.execute(query)
                 return result.scalars().all()
