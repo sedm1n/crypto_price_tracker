@@ -26,11 +26,15 @@ async def add_ticker(ticker:TickerSchema):
     
     return {"message": f"Ticker {ticker.name} added"}
 
-@router.delete("/{ticker}")
-async def delete_ticker(ticker:str):
-    exist_ticker = await TickerDao.find_one_or_none(name=ticker)
+@router.post("/delete")
+async def delete_ticker(ticker:TickerSchema):
+    exist_ticker = await TickerDao.find_one_or_none(name=ticker.name)
+    print(ticker)
+    
     if not exist_ticker:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Ticker not found")
-    await TickerDao().delete(name=ticker)
-    return {"message": f"Ticker {ticker} deleted"}
+    
+    await TickerDao().delete(exist_ticker.id)
+    
+    return {"message": f"Ticker {ticker.name} deleted"}
 

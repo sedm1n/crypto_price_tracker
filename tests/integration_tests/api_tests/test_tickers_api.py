@@ -35,3 +35,18 @@ async def test_add_ticker(
     if expected:
         assert response.json() == {"message": f"Ticker {name} added"}
      
+@pytest.mark.parametrize(
+    "name, status_code, expected",
+    [
+        ("btc_usd", 200, True),
+        
+    ],
+)
+async def test_delete_ticker(
+    name: str, status_code: int, expected: bool, async_client: AsyncClient
+):
+
+    response = await async_client.post("/api/tickers/delete", json={"name": name})
+    assert response.status_code == status_code
+    if expected:
+        assert response.json() == {"message": f"Ticker {name} deleted"}

@@ -22,6 +22,7 @@ async def get_price_history_all()->list[PriceHistoryResponseSchema]:
 
 @router.get("/{ticker}")
 async def get_price_history(ticker: str)->list[PriceHistoryResponseSchema]:
+    
     exist_ticker = await TickerDao.find_one_or_none(name=ticker)
     if not exist_ticker:
         logger.error("Ticker %s not found", ticker)
