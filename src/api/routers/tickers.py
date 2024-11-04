@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, status, Depends
 
-from api.schemas.tikcker import TickerSchema
-from db.dao.ticker import TickerDao
+from src.api.schemas.tikcker import TickerSchema
+from src.db.dao.ticker import TickerDao
 
 
 router = APIRouter(prefix="/api/tickers", tags=["tickers"])

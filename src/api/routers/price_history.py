@@ -2,9 +2,9 @@ import logging
 
 from fastapi import APIRouter, Depends, HTTPException, status
 
-from api.schemas.price_history import PriceHistoryResponseSchema
-from db.dao.price_history import PriceHistoryDao
-from db.dao.ticker import TickerDao
+from src.api.schemas.price_history import PriceHistoryResponseSchema
+from src.db.dao.price_history import PriceHistoryDao
+from src.db.dao.ticker import TickerDao
 
 logger = logging.getLogger(__name__)
 

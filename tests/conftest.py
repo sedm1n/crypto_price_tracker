@@ -9,8 +9,8 @@ from sqlalchemy import insert
 from src.db.database import Base, async_session, engine
 from src.db.models.ticker import Ticker
 from src.db.models.price_history import PriceHistory
-from core.config import cfg
-from src.app import app
+from src.core.config import cfg
+from app import app
 
 @pytest.fixture(scope="session", autouse=True)
 async def prepare_db():

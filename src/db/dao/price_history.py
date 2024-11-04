@@ -1,7 +1,7 @@
 
 from typing import List
-from db.models.price_history import PriceHistory
-from db.dao.base import BaseDao
+from src.db.models.price_history import PriceHistory
+from src.db.dao.base import BaseDao
 
 
 class PriceHistoryDao(BaseDao):

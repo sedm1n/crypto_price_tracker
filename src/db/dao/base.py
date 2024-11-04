@@ -2,7 +2,7 @@ import logging
 from sqlalchemy import delete, insert, select, update
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 
-from db.database import get_async_session
+from src.db.database import get_async_session
 
 logger = logging.getLogger(__name__)
 

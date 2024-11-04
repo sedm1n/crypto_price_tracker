@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
-from core.config import cfg
+from src.core.config import cfg
 
 
 class Base(DeclarativeBase):
