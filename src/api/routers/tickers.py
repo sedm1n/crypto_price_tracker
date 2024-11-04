@@ -15,12 +15,15 @@ async def get_tickers():
     
     return tickers
 
-@router.post("/add_ticker")
+@router.post("/add_ticker", status_code=status.HTTP_201_CREATED)
 async def add_ticker(ticker:TickerSchema):
     exist_ticker = await TickerDao.find_one_or_none(name=ticker.name)
+    
     if exist_ticker:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Ticker already exists")
     await TickerDao().add(name=ticker.name)
+    
+    
     return {"message": f"Ticker {ticker.name} added"}
 
 @router.delete("/{ticker}")
