@@ -36,7 +36,7 @@ async def get_price_history_all(
         prices = await PriceHistoryDao().get_all_by_ticker(ticker)
     except TickerNotFoundError as e:
         logger.error("No prices found for ticker: %s", ticker)
-        raise HTTPException(status_code=404, detail=str(e))
+        raise HTTPException(status_code=404, detail=f"Ticker {ticker} not found")
     except PricesNotFoundError as e:
         logger.error("No prices found for ticker: %s", ticker)
         raise HTTPException(status_code=404, detail=str(e))
@@ -62,11 +62,11 @@ async def get_latest_price(ticker: str = Query(...)) -> PriceHistoryResponseSche
     try:
         latest_price = await PriceHistoryDao().get_latest_by_ticker(ticker)
     except TickerNotFoundError as e:
-        logger.error("No latest price found for ticker: %s", ticker)
-        raise HTTPException(status_code=404, detail=str(e))
+        logger.error("No ticker: %s", ticker)
+        raise HTTPException(status_code=404, detail=f"Ticker {ticker} not found")
     except PricesNotFoundError as e:
         logger.error("No latest price found for ticker: %s", ticker)
-        raise HTTPException(status_code=404, detail=str(e))
+        raise HTTPException(status_code=404, detail= f"No latest price found {ticker}")
 
     return latest_price
 
