@@ -1,11 +1,11 @@
 import logging
 from typing import Optional
 
-from fastapi import APIRouter, Query, HTTPException, status
+from fastapi import APIRouter, HTTPException, Query, status
 
+from src.api.schemas.price_history import PriceHistoryResponseSchema
 from src.api.schemas.tikcker import TickerSchema
 from src.core.exeptions import PricesNotFoundError, TickerNotFoundError
-from src.api.schemas.price_history import PriceHistoryResponseSchema
 from src.db.dao.price_history import PriceHistoryDao
 from src.db.dao.ticker import TickerDao
 

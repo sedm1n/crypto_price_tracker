@@ -8,6 +8,9 @@ from services.collector.price_history import periodic_price_fetch
 
 logging.config.dictConfig(logging_config)
 
+logger = logging.getLogger(__name__)
+
+
 async def main():
     async with DeribitClient() as client:
 

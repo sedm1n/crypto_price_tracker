@@ -15,9 +15,8 @@ logger = logging.getLogger(__name__)
 
 
 def get_unix_timestamp(date_str: str) -> int:
-
     dt = datetime.strptime(date_str, "%d-%m-%Y")
-
+    
     return int(dt.timestamp())
 
 
