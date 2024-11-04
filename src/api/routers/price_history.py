@@ -19,11 +19,26 @@ async def get_price_history_all(
     ticker: str = Query(...),
 ) -> list[PriceHistoryResponseSchema]:
 
+    """
+    Get a list of prices for a given ticker.
+
+    Args:
+    - ticker (str): The ticker symbol
+
+    Returns:
+    - list[PriceHistoryResponseSchema]: A list of prices
+
+    Raises:
+    - HTTPException: If the ticker is not found
+    - HTTPException: If no prices are found for the given ticker
+    """
     try:
         prices = await PriceHistoryDao().get_all_by_ticker(ticker)
     except TickerNotFoundError as e:
+        logger.error("No prices found for ticker: %s", ticker)
         raise HTTPException(status_code=404, detail=str(e))
     except PricesNotFoundError as e:
+        logger.error("No prices found for ticker: %s", ticker)
         raise HTTPException(status_code=404, detail=str(e))
 
     return prices
@@ -32,27 +47,61 @@ async def get_price_history_all(
 @router.get("/latest")
 async def get_latest_price(ticker: str = Query(...)) -> PriceHistoryResponseSchema:
 
-    latest_price = await PriceHistoryDao().get_latest_by_ticker(ticker)
+    """
+    Get the latest price for a given ticker.
 
-    if not latest_price:
-        logger.error(f"No latest price found for ticker: {ticker}")
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND, detail="Latest price not found"
-        )
+    Args:
+    - ticker (str): The ticker symbol
+
+    Returns:
+    - PriceHistoryResponseSchema: The latest price
+
+    Raises:
+    - HTTPException: If the ticker is not found
+    """
+    try:
+        latest_price = await PriceHistoryDao().get_latest_by_ticker(ticker)
+    except TickerNotFoundError as e:
+        logger.error("No latest price found for ticker: %s", ticker)
+        raise HTTPException(status_code=404, detail=str(e))
+    except PricesNotFoundError as e:
+        logger.error("No latest price found for ticker: %s", ticker)
+        raise HTTPException(status_code=404, detail=str(e))
 
     return latest_price
 
 
 @router.get("/prices/date")
 async def get_price_by_date(
-    ticker: str = Query(...), start_date: str = Query(...), end_date: Optional[str] = Query(None)) -> list[PriceHistoryResponseSchema]:
-    prices = await PriceHistoryDao().get_by_ticker_and_date(ticker, start_date, end_date)
+    ticker: str = Query(...),
+    start_date: str = Query(...),
+    end_date: Optional[str] = Query(None),
+) -> list[PriceHistoryResponseSchema]:
 
-    if not prices:
-        logger.error(f"No prices found for ticker: {ticker} on date: {start_date}")
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Prices not found for the given date",
+    """
+    Get a list of prices for a given ticker and date range.
+
+    Args:
+    - ticker (str): The ticker symbol
+    - start_date (str): The start date in ISO format
+    - end_date (Optional[str]): The end date in ISO format (default is None)
+
+    Returns:
+    - list[PriceHistoryResponseSchema]: A list of prices
+
+    Raises:
+    - HTTPException: If the ticker is not found
+    - HTTPException: If no prices are found for the given ticker and date range
+    """
+    try:
+        prices = await PriceHistoryDao().get_by_ticker_and_date(
+            ticker, start_date, end_date
         )
+    except TickerNotFoundError as e:
+        logger.error("No prices found for ticker: %s on date: %s", ticker, start_date)
+        raise HTTPException(status_code=404, detail=str(e))
+    except PricesNotFoundError as e:
+        logger.error("No prices found for ticker: %s on date: %s", ticker, start_date)
+        raise HTTPException(status_code=404, detail=str(e))
 
     return prices
