@@ -54,7 +54,7 @@ class BaseDao:
                 return result.scalars().all()
 
             except SQLAlchemyError as e:
-               
+                extra = {"filter": filter_by}
                 logger.error(e, extra=extra, exc_info=True)
                 return None
 
