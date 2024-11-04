@@ -1,12 +1,11 @@
 [
     {
-      "name": "btc_usd",
-      "created_at": 1730546654,
-      
+        "name": "btc_usd"
     },
     {
-      "name": "eth_usd",
-      "created_at": 1730546654,
-      
+        "name": "eth_usd"
+    },
+    {
+        "name": "xrp_usd"
     }
-  ]
+]

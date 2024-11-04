@@ -21,7 +21,8 @@ async def prepare_db():
             await conn.run_sync(Base.metadata.create_all)
       
       def open_mock_json(model:str):
-            with open(f"src/tests/fixtures/mock_{model}.json") as f:
+            with open(f"tests/fixtures/mock_{model}.json") as f:
+                  
                   return json.load(f)
             
       
@@ -51,7 +52,7 @@ def event_loop(request):
 
 
 @pytest.fixture(scope="function")
-async def asycn_client():
+async def async_client():
       async with AsyncClient(app=app, base_url="http://test") as ac:
             yield ac
 

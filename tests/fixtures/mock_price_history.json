@@ -1,157 +1,252 @@
 [
     {
-        "ticker_id": 2,
-        "price": 2456.45,
+        "ticker_id": 1,
+        "price": 13803.09,
         "created_at": 1730629132
     },
     {
-        "ticker_id": 1,
-        "price": 68390.11,
+        "ticker_id": 2,
+        "price": 29019.66,
         "created_at": 1730629192
     },
     {
         "ticker_id": 2,
-        "price": 2456.6,
-        "created_at": 1730629192
+        "price": 21281.29,
+        "created_at": 1730629252
     },
     {
         "ticker_id": 1,
-        "price": 68362.98,
-        "created_at": 1730629253
-    },
-    {
-        "ticker_id": 2,
-        "price": 2455.84,
-        "created_at": 1730629253
+        "price": 65837.35,
+        "created_at": 1730629312
     },
     {
         "ticker_id": 1,
-        "price": 68323.54,
-        "created_at": 1730629314
-    },
-    {
-        "ticker_id": 2,
-        "price": 2454.5,
-        "created_at": 1730629314
+        "price": 9378.28,
+        "created_at": 1730629372
     },
     {
         "ticker_id": 1,
-        "price": 68341.68,
-        "created_at": 1730629375
-    },
-    {
-        "ticker_id": 2,
-        "price": 2455.28,
-        "created_at": 1730629375
+        "price": 31057.86,
+        "created_at": 1730629432
     },
     {
         "ticker_id": 1,
-        "price": 68367.79,
-        "created_at": 1730629437
+        "price": 65416.24,
+        "created_at": 1730629492
     },
     {
         "ticker_id": 2,
-        "price": 2455.85,
-        "created_at": 1730629437
+        "price": 43251.6,
+        "created_at": 1730629552
     },
     {
         "ticker_id": 1,
-        "price": 68374.16,
-        "created_at": 1730629498
+        "price": 12219.63,
+        "created_at": 1730629612
     },
     {
         "ticker_id": 2,
-        "price": 2455.84,
-        "created_at": 1730629498
+        "price": 4454.25,
+        "created_at": 1730629672
+    },
+    {
+        "ticker_id": 2,
+        "price": 22566.89,
+        "created_at": 1730629732
+    },
+    {
+        "ticker_id": 2,
+        "price": 22732.39,
+        "created_at": 1730629792
     },
     {
         "ticker_id": 1,
-        "price": 68400,
-        "created_at": 1730629559
-    },
-    {
-        "ticker_id": 2,
-        "price": 2457.34,
-        "created_at": 1730629559
+        "price": 55012.29,
+        "created_at": 1730629852
     },
     {
         "ticker_id": 1,
-        "price": 68469.72,
-        "created_at": 1730629620
+        "price": 39217.75,
+        "created_at": 1730629912
     },
     {
         "ticker_id": 2,
-        "price": 2458.8,
-        "created_at": 1730629620
+        "price": 60104.31,
+        "created_at": 1730629972
+    },
+    {
+        "ticker_id": 2,
+        "price": 30623.71,
+        "created_at": 1730630032
     },
     {
         "ticker_id": 1,
-        "price": 68473.54,
-        "created_at": 1730629680
+        "price": 41824.39,
+        "created_at": 1730630092
     },
     {
         "ticker_id": 2,
-        "price": 2459.4,
-        "created_at": 1730629680
+        "price": 67828.5,
+        "created_at": 1730630152
+    },
+    {
+        "ticker_id": 2,
+        "price": 21234.16,
+        "created_at": 1730630212
+    },
+    {
+        "ticker_id": 2,
+        "price": 28585.94,
+        "created_at": 1730630272
     },
     {
         "ticker_id": 1,
-        "price": 68510.23,
-        "created_at": 1730632468
+        "price": 43359.04,
+        "created_at": 1730630332
     },
     {
         "ticker_id": 2,
-        "price": 2460.07,
-        "created_at": 1730632468
+        "price": 44919.92,
+        "created_at": 1730630392
+    },
+    {
+        "ticker_id": 2,
+        "price": 44837.67,
+        "created_at": 1730630452
+    },
+    {
+        "ticker_id": 2,
+        "price": 63298.23,
+        "created_at": 1730630512
+    },
+    {
+        "ticker_id": 2,
+        "price": 9004.53,
+        "created_at": 1730630572
+    },
+    {
+        "ticker_id": 2,
+        "price": 23979.64,
+        "created_at": 1730630632
     },
     {
         "ticker_id": 1,
-        "price": 68502.63,
-        "created_at": 1730632536
+        "price": 32007.21,
+        "created_at": 1730630692
     },
     {
         "ticker_id": 2,
-        "price": 2459.67,
-        "created_at": 1730632536
+        "price": 35364.71,
+        "created_at": 1730630752
     },
     {
         "ticker_id": 1,
-        "price": 68494.11,
-        "created_at": 1730632560
-    },
-    {
-        "ticker_id": 2,
-        "price": 2458.99,
-        "created_at": 1730632560
+        "price": 66851.15,
+        "created_at": 1730630812
     },
     {
         "ticker_id": 1,
-        "price": 68509.98,
-        "created_at": 1730632629
-    },
-    {
-        "ticker_id": 2,
-        "price": 2459.81,
-        "created_at": 1730632629
+        "price": 28654.78,
+        "created_at": 1730630872
     },
     {
         "ticker_id": 1,
-        "price": 68519.26,
-        "created_at": 1730632691
+        "price": 51872.52,
+        "created_at": 1730630932
     },
     {
         "ticker_id": 2,
-        "price": 2460.89,
-        "created_at": 1730632691
+        "price": 14840.3,
+        "created_at": 1730630992
+    },
+    {
+        "ticker_id": 2,
+        "price": 56549.56,
+        "created_at": 1730631052
+    },
+    {
+        "ticker_id": 2,
+        "price": 24450.59,
+        "created_at": 1730631112
+    },
+    {
+        "ticker_id": 2,
+        "price": 38180.19,
+        "created_at": 1730631172
+    },
+    {
+        "ticker_id": 2,
+        "price": 42357.48,
+        "created_at": 1730631232
+    },
+    {
+        "ticker_id": 2,
+        "price": 64484.88,
+        "created_at": 1730631292
     },
     {
         "ticker_id": 1,
-        "price": 68517.63,
-        "created_at": 1730632754
+        "price": 43688.47,
+        "created_at": 1730631352
     },
     {
         "ticker_id": 2,
-        "price": 2459.87,
-        "created_at": 1730632754
+        "price": 26232.54,
+        "created_at": 1730631412
+    },
+    {
+        "ticker_id": 2,
+        "price": 18151.16,
+        "created_at": 1730631472
+    },
+    {
+        "ticker_id": 1,
+        "price": 26065.8,
+        "created_at": 1730631532
+    },
+    {
+        "ticker_id": 1,
+        "price": 36390.16,
+        "created_at": 1730631592
+    },
+    {
+        "ticker_id": 2,
+        "price": 58107.89,
+        "created_at": 1730631652
+    },
+    {
+        "ticker_id": 1,
+        "price": 32017.61,
+        "created_at": 1730631712
+    },
+    {
+        "ticker_id": 2,
+        "price": 29316.97,
+        "created_at": 1730631772
+    },
+    {
+        "ticker_id": 2,
+        "price": 24559.07,
+        "created_at": 1730631832
+    },
+    {
+        "ticker_id": 1,
+        "price": 26163.84,
+        "created_at": 1730631892
+    },
+    {
+        "ticker_id": 1,
+        "price": 20455.47,
+        "created_at": 1730631952
+    },
+    {
+        "ticker_id": 1,
+        "price": 7865.41,
+        "created_at": 1730632012
+    },
+    {
+        "ticker_id": 1,
+        "price": 31094.89,
+        "created_at": 1730632072
     }
 ]
